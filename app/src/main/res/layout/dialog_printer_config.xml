@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Drucker-IP-Adresse"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="?android:attr/textColorPrimary"
+        android:layout_marginBottom="6dp" />
+
+    <EditText
+        android:id="@+id/etPrinterIp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="z. B. 192.168.178.34"
+        android:inputType="textUri"
+        android:singleLine="true"
+        android:padding="10dp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Druckdaten-Format"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="?android:attr/textColorPrimary"
+        android:layout_marginBottom="6dp" />
+
+    <RadioGroup
+        android:id="@+id/rgFormat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/rbFormatJpeg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="image/jpeg (Direktdruck - empfohlen für HP 8120e)"
+            android:textSize="13sp"
+            android:paddingBottom="4dp" />
+
+        <RadioButton
+            android:id="@+id/rbFormatPwg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="image/pwg-raster (Standard PWG-Rasterung)"
+            android:textSize="13sp" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Tipp: Der HP OfficeJet Pro 8120e unterstützt natives JPEG direkt via IPP. Das ist schneller und vermeidet Raster-Fehler."
+        android:textSize="11sp"
+        android:textColor="?android:attr/textColorSecondary" />
+</LinearLayout>

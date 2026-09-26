@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:orientation="vertical">
+
+    <!-- Header Toolbar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/btnBackFromEdit"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_back"
+            app:tint="@color/text_primary" />
+
+        <TextView
+            android:id="@+id/tvEditTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/btnBackFromEdit"
+            android:text="Bild bearbeiten"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/btnUndo"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/ic_rotate"
+                app:tint="@color/text_primary" />
+
+            <ImageView
+                android:id="@+id/btnRedo"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_rotate"
+                app:tint="@color/text_primary" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- Main Photo Preview -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#050B12"
+        android:padding="8dp">
+
+        <de.stevenprint.app.PaperPreviewView
+            android:id="@+id/editorPaperPreview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!-- Info Badge -->
+        <TextView
+            android:id="@+id/tvEditImageDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="12dp"
+            android:background="@drawable/bg_tile_unselected"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:text="Vorschau"
+            android:textColor="@color/text_primary"
+            android:textSize="11sp" />
+
+        <!-- Floating Zoom Controls -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_tile_unselected"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_photo"
+                app:tint="@color/text_secondary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="100%"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_crop"
+                app:tint="@color/text_secondary" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- Controls & Tool Sliders Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card_bg"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Tools Row -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Tool 1: Zuschneiden / Format -->
+                <LinearLayout
+                    android:id="@+id/toolCrop"
+                    android:layout_width="72dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_tile_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_crop"
+                        app:tint="@color/text_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Format"
+                        android:textColor="@color/text_primary"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <!-- Tool 2: Drehen -->
+                <LinearLayout
+                    android:id="@+id/toolRotate"
+                    android:layout_width="72dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_tile_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_rotate"
+                        app:tint="@color/text_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Drehen"
+                        android:textColor="@color/text_primary"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <!-- Tool 3: Anpassen -->
+                <LinearLayout
+                    android:id="@+id/toolAdjust"
+                    android:layout_width="72dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_tile_selected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_adjust"
+                        app:tint="@color/text_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Anpassen"
+                        android:textColor="@color/text_primary"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <!-- Tool 4: Filter -->
+                <LinearLayout
+                    android:id="@+id/toolFilter"
+                    android:layout_width="72dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/bg_tile_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_filter"
+                        app:tint="@color/text_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Filter"
+                        android:textColor="@color/text_primary"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Sliders Container for Anpassen -->
+        <LinearLayout
+            android:id="@+id/layoutSliders"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <!-- Brightness Slider -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Helligkeit"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvBrightnessValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="0"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+                <SeekBar
+                    android:id="@+id/seekBarBrightness"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvBrightnessValue"
+                    android:max="200"
+                    android:progress="100" />
+            </RelativeLayout>
+
+            <!-- Contrast Slider -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kontrast"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvContrastValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="0"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+                <SeekBar
+                    android:id="@+id/seekBarContrast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvContrastValue"
+                    android:max="200"
+                    android:progress="100" />
+            </RelativeLayout>
+
+            <!-- Saturation Slider -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sättigung"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvSaturationValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="0"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+                <SeekBar
+                    android:id="@+id/seekBarSaturation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvSaturationValue"
+                    android:max="200"
+                    android:progress="100" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!-- Filters Preset Container -->
+        <HorizontalScrollView
+            android:id="@+id/layoutFilters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:visibility="gone"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button android:id="@+id/filterOriginal" style="?android:attr/borderlessButtonStyle" android:layout_width="80dp" android:layout_height="40dp" android:background="@drawable/bg_tile_selected" android:text="Original" android:textColor="@color/text_primary" android:textSize="11sp"/>
+                <Button android:id="@+id/filterLebendig" style="?android:attr/borderlessButtonStyle" android:layout_width="80dp" android:layout_height="40dp" android:layout_marginStart="6dp" android:background="@drawable/bg_tile_unselected" android:text="Lebendig" android:textColor="@color/text_primary" android:textSize="11sp"/>
+                <Button android:id="@+id/filterNatuerlich" style="?android:attr/borderlessButtonStyle" android:layout_width="80dp" android:layout_height="40dp" android:layout_marginStart="6dp" android:background="@drawable/bg_tile_unselected" android:text="Natürlich" android:textColor="@color/text_primary" android:textSize="11sp"/>
+                <Button android:id="@+id/filterWarm" style="?android:attr/borderlessButtonStyle" android:layout_width="80dp" android:layout_height="40dp" android:layout_marginStart="6dp" android:background="@drawable/bg_tile_unselected" android:text="Warm" android:textColor="@color/text_primary" android:textSize="11sp"/>
+                <Button android:id="@+id/filterKuehl" style="?android:attr/borderlessButtonStyle" android:layout_width="80dp" android:layout_height="40dp" android:layout_marginStart="6dp" android:background="@drawable/bg_tile_unselected" android:text="Kühl" android:textColor="@color/text_primary" android:textSize="11sp"/>
+                <Button android:id="@+id/filterBW" style="?android:attr/borderlessButtonStyle" android:layout_width="80dp" android:layout_height="40dp" android:layout_marginStart="6dp" android:background="@drawable/bg_tile_unselected" android:text="B &amp; W" android:textColor="@color/text_primary" android:textSize="11sp"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Formats / Crop / Scale Mode Container -->
+        <HorizontalScrollView
+            android:id="@+id/layoutCrop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:visibility="gone"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button android:id="@+id/cropFit" style="?android:attr/borderlessButtonStyle" android:layout_width="90dp" android:layout_height="40dp" android:background="@drawable/bg_tile_selected" android:text="Anpassen" android:textColor="@color/text_primary" android:textSize="11sp"/>
+                <Button android:id="@+id/cropFill" style="?android:attr/borderlessButtonStyle" android:layout_width="90dp" android:layout_height="40dp" android:layout_marginStart="6dp" android:background="@drawable/bg_tile_unselected" android:text="Ausfüllen" android:textColor="@color/text_primary" android:textSize="11sp"/>
+                <Button android:id="@+id/cropA4" style="?android:attr/borderlessButtonStyle" android:layout_width="80dp" android:layout_height="40dp" android:layout_marginStart="6dp" android:background="@drawable/bg_tile_unselected" android:text="A4" android:textColor="@color/text_primary" android:textSize="11sp"/>
+                <Button android:id="@+id/cropA5" style="?android:attr/borderlessButtonStyle" android:layout_width="80dp" android:layout_height="40dp" android:layout_marginStart="6dp" android:background="@drawable/bg_tile_unselected" android:text="A5" android:textColor="@color/text_primary" android:textSize="11sp"/>
+                <Button android:id="@+id/crop10x15" style="?android:attr/borderlessButtonStyle" android:layout_width="80dp" android:layout_height="40dp" android:layout_marginStart="6dp" android:background="@drawable/bg_tile_unselected" android:text="10x15" android:textColor="@color/text_primary" android:textSize="11sp"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Final CTA Button -->
+        <Button
+            android:id="@+id/btnApplyAndPrint"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_button_blue"
+            android:text="Weiter zum Drucken ->"
+            android:textColor="@color/text_primary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

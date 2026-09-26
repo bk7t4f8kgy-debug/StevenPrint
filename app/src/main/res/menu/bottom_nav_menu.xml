@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_start"
+        android:icon="@drawable/ic_start"
+        android:title="Start" />
+    <item
+        android:id="@+id/nav_print"
+        android:icon="@drawable/ic_print"
+        android:title="Drucken" />
+    <item
+        android:id="@+id/nav_scan"
+        android:icon="@drawable/ic_scan"
+        android:title="Scannen" />
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="Einstellungen" />
+</menu>

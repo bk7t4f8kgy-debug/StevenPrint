@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Background & Canvas -->
+    <color name="bg_dark">#0A0F18</color>
+    <color name="bottom_nav_bg">#0D1522</color>
+
+    <!-- Material 3 Surface Containers -->
+    <color name="card_bg">#131E2D</color>
+    <color name="card_bg_elevated">#1A273A</color>
+    <color name="card_stroke">#22344D</color>
+    <color name="divider_color">#1B293D</color>
+
+    <!-- Primary Accent (StevenPrint Blue) -->
+    <color name="primary_blue">#0A84FF</color>
+    <color name="primary_blue_dark">#0066D6</color>
+    <color name="primary_blue_container">#0E2A4A</color>
+
+    <!-- Semantic Status Tones -->
+    <color name="accent_green">#30D158</color>
+    <color name="accent_yellow">#FFD60A</color>
+    <color name="accent_red">#FF453A</color>
+
+    <!-- Typography -->
+    <color name="text_primary">#F5F7FA</color>
+    <color name="text_secondary">#8E9EB5</color>
+    <color name="text_muted">#556880</color>
+
+    <!-- Legacy mappings for compatibility -->
+    <color name="tile_bg">#182638</color>
+    <color name="tile_selected">#0A84FF</color>
+</resources>
